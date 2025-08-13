@@ -1,0 +1,184 @@
+@charset "UTF-8";
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.intro::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(50px);
+  transform: rotate(25deg);
+  animation: roundLight 10s ease-in-out infinite;
+  z-index: 2; /* frame보다 뒤, bg보다 위 */
+  pointer-events: none;
+}
+
+@keyframes roundLight {
+  0% {
+    transform: translate(-20%, -20%);
+  }
+  25% {
+    transform: translate(20%, -10%);
+  }
+  50% {
+    transform: translate(20%, 20%);
+  }
+  75% {
+    transform: translate(-20%, 10%);
+  }
+  100% {
+    transform: translate(-20%, -20%);
+  }
+}
+/*인트로-knock*/
+/* 인트로 전체 컨테이너 */
+.intro {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  cursor: url("images/cursor.png") 0 0, auto; /* 마우스 커서 */
+}
+
+/* 배경 이미지 */
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  z-index: 1;
+}
+
+/* 프레임 + 텍스트 + 버튼 묶음 */
+.frame-group {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 70%; /* 부모 크기(비율 조절) */
+  max-width: 1440px; /* 최대 크기 제한 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.frame {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.text {
+  position: absolute;
+  top: 40%; /* 프레임 안에서 세로 위치 조정 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: auto;
+  z-index: 2;
+}
+
+.start {
+  position: absolute;
+  top: 55%; /* 프레임 안에서 세로 위치 조정 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20%;
+  height: auto;
+  z-index: 3;
+}
+
+/* 카피라이트 */
+.copyright {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 300px;
+  max-width: 30vw;
+  height: auto;
+}
+
+/* 📱 모바일 */
+@media screen and (max-width: 768px) {
+  .bg {
+    content: url("images/mo.png");
+  }
+  .start {
+    position: absolute;
+    top: 30%; /* ← 여기로 원하는 만큼 위로 올림 */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: auto;
+    content: none; /* content 방식 비활성화 */
+  }
+  /* HTML 태그로 바꾼 이미지 src 교체 */
+  .start[src] {
+    content: none;
+  }
+  .frame, .text, .copyright {
+    display: none;
+  }
+}
+/*인트로 애니메이션*/
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    filter: brightness(0.8);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+/* 깜빡임 루프 */
+@keyframes blinkLoop {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.frame, .text, .start {
+  opacity: 0;
+  animation: fadeUp 2s ease forwards;
+}
+
+/* 순차 딜레이 */
+.frame {
+  animation-delay: 0.5s;
+}
+
+.text {
+  animation-delay: 1s;
+}
+
+.start {
+  animation-delay: 2s;
+}
+
+@media screen and (max-width: 768px) {
+  .start {
+    animation-delay: 1s; /* 모바일은 순서 맞춰 딜레이 조정 */
+  }
+}/*# sourceMappingURL=style.css.map */

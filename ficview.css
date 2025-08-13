@@ -1,0 +1,672 @@
+@charset "UTF-8";
+/* =========================================
+   MOBILE-FIRST TOKENS (기본 = 모바일)
+   데스크탑은 아래 @media(min-width: 573px)에서 보정
+========================================= */
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/woff2/PretendardVariable.woff2") format("woff2-variations");
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Originals";
+  src: url("fonts/originals.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "cam";
+  src: url("fonts/CambayDevanagari-Bold.AH.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "camobli";
+  src: url("fonts/CambayDevanagari-BoldOblique.AH.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "book";
+  src: url("fonts/BookkMyungjo_Light.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "bookbd";
+  src: url("fonts/BookkMyungjo_Bold.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "1945";
+  src: url("fonts/Eulyoo1945-Regular.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "1945bd";
+  src: url("fonts/Eulyoo1945-SemiBold.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "yes";
+  src: url("fonts/YES24MyoungjoR.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "yesbd";
+  src: url("fonts/YES24MyoungjoB.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "kopub";
+  src: url("fonts/KoPubWorld_Dotum_Pro_Medium.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "kopubbd";
+  src: url("fonts/KoPubWorld_Dotum_Pro_Bold.otf") format("opentype");
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  background: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: "Pretendard", system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+  line-height: 1.75;
+  color: #000000;
+  cursor: url("images/cursor.png") 6 6, auto;
+}
+
+/* 고정 배경 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("images/bg_light.jpg") center/cover no-repeat;
+  z-index: -1;
+}
+
+/* 전역 변수 (모바일 기본값) */
+:root {
+  /* 레이아웃 */
+  --wrap-pad-top:70px;
+  --wrap-pad-x:14px;
+  --wrap-pad-bottom:40px;
+  /* 폰트 */
+  --font-a: "Pretendard", system-ui, -apple-system, sans-serif;
+  --font-b: "book";
+  --font-c: "1945"; /* ← 여기에 실제 이름 */
+  --font-d: "yes"; /* ← 여기에 실제 이름 */
+  /* 홈 로고 */
+  --home-top:15px;
+  --home-left:10px;
+  --home-w:100px;
+  /* 브랜드/내비 */
+  --fic-w:130px;
+  --brand-gap:0px;
+  --header-gap-bottom:40px;
+  --cat-gap:35px;
+  --cat-fs:6.5px;
+  /* BG 박스 */
+  --bg-max:800px; /* PC에서 max */
+  --bg-radius:0px;
+  --bg-alpha:0.7;
+  --bg-blur-alpha: .60; /* 하얀 레이어의 불투명도 */
+  --bg-blur-pad:0px; /* 사각형 테두리 여백(안쪽으로 오므라듦) */
+  --bg-blur-px:6px; /* 블러 강도 */
+  /* 본문 폭 비율(박스 기준) */
+  --text-ratio:0.9227; /* 모바일: 346 / 375 ≈ 0.9227 */
+  --read-scale:1; /* JS가 조절하는 크기 배율 */
+  /* 기본 읽기값(Figma) */
+  --read-track: -0.01em; /* -1% ≈ -0.01em */
+  --para-gap: 30px; /* 모바일 기본 문단 간격 */
+  --content-font: "Pretendard", system-ui, -apple-system, "Noto Sans KR", sans-serif;
+  /* 제목 전용 변수 */
+  --title-font: var(--content-font);
+  --title-weight: 700; /* 기본 볼드 */
+  --title-track: -0.01em; /* 제목 자간 기본값 */
+  /* 유튜브 크기(모바일) */
+  --yt-w:318px;
+  --yt-h:179px;
+  /* 액션 버튼 */
+  --prefs-pad-x:14px; /* 패널 좌우 패딩 */
+  --prefs-label-shift: 15px; /* 라벨만 추가 들여쓰기 */
+  --btn-w:96px;
+  --btn-h:72px;
+  --btn-radius:8px;
+  /* Glass tokens */
+  --glass-blur: 16px;
+  --glass-bg-1: rgba(255,255,255,.22);
+  --glass-bg-2: rgba(255,255,255,.08);
+  --glass-border: rgba(255,255,255,.55);
+  --glass-shadow: 0 6px 10px rgba(77, 77, 77, 0.058);
+  --glass-txt: #1f2d36;
+  --glass-txt-dim: #3a5464;
+  --ab-maxw: 600px;
+  /* 푸터 */
+  --ft-maxw:700px;
+  --ft-pad-top:80px;
+  --ft-pad-x:20px;
+  --cr-img-w:200px;
+  --cr-mt:14px;
+}
+
+/* 래퍼 */
+.wrap {
+  width: 100%;
+  max-width: var(--bg-max);
+  margin: 0 auto;
+  padding: var(--wrap-pad-top) var(--wrap-pad-x) var(--wrap-pad-bottom);
+}
+
+/* 홈 로고 */
+.home-link {
+  position: absolute;
+  top: var(--home-top);
+  left: var(--home-left);
+  z-index: 100;
+}
+
+.home-logo {
+  width: var(--home-w);
+  height: auto;
+}
+
+/* 헤더 */
+.top {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: var(--header-gap-bottom);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--brand-gap);
+  text-align: center;
+}
+
+.fic-logo {
+  width: var(--fic-w);
+  margin: 0 auto;
+}
+
+/* 카테고리 */
+.cat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--cat-gap);
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.cat a {
+  text-decoration: none;
+}
+
+.cat span {
+  font-family: "Originals", "Pretendard", sans-serif;
+  font-size: var(--cat-fs);
+  color: #787878;
+}
+
+.cat a.is-active span {
+  opacity: 0.5;
+}
+
+/* 환경설정(헤더 우상단; 스크롤하면 자연히 사라짐) */
+.prefs {
+  position: absolute;
+  top: var(--home-top);
+  right: var(--home-left);
+  z-index: 100;
+}
+
+.prefs-trigger {
+  position: relative;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: transparent;
+  padding: 5px 10px;
+  cursor: pointer;
+  /* 내부로 회색 블러 */
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.14), inset 0 -3px 6px rgba(255, 255, 255, 0.75);
+  /* 살짝 유리감 원하면 */
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+}
+
+.prefs-panel {
+  display: none;
+  position: absolute;
+  top: 36px;
+  right: 0;
+  width: min(88vw, 280px);
+  padding: 12px var(--prefs-pad-x);
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--glass-bg-1), var(--glass-bg-2));
+  backdrop-filter: blur(var(--glass-blur)) saturate(1);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), inset 0 0.5px 0 rgba(255, 255, 255, 0.249);
+  color: var(--glass-txt);
+}
+
+.prefs.open .prefs-panel {
+  display: block;
+}
+
+.prefs-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px dashed rgba(0, 0, 0, 0.12);
+  font-size: 14px;
+}
+
+.prefs-row:first-child {
+  border-top: 0;
+}
+
+/* ← 이 한 줄이 라벨만 오른쪽으로 이동 */
+.prefs-row .label {
+  margin-left: var(--prefs-label-shift);
+  color: var(--glass-txt-dim);
+}
+
+/* 공통 글래스 버튼 느낌 */
+.toggle-dark, .size-ctrl button, .font-chip {
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, var(--glass-bg-1), var(--glass-bg-2));
+  color: var(--glass-txt);
+  backdrop-filter: blur(calc(var(--glass-blur) * 0.8)) saturate(1.2);
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 0.8)) saturate(1.2);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.toggle-dark {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.size-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.size-ctrl button {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.size-state {
+  font-size: 13px;
+  min-width: 42px;
+  text-align: center;
+  color: #354b57;
+}
+
+.font-choices {
+  display: flex;
+  gap: 8px;
+}
+
+.font-chip {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.font-chip span {
+  font-size: 13px;
+  color: var(--glass-txt);
+}
+
+.font-chip.is-active {
+  outline: 0px solid #82e6ff;
+  box-shadow: 0 0px 6px #a0bac2;
+}
+
+.reading {
+  text-align: left;
+}
+
+/* 문단 간격: 첫 문단은 0, 이후 문단만 간격 */
+.reading p {
+  margin: 0;
+}
+
+.reading p + p {
+  margin-top: var(--para-gap);
+}
+
+/* 본문에 적용되는 클래스 */
+.reading.font-a {
+  font-family: var(--font-a);
+  --read-lh: var(--lh-a);
+  --read-track: var(--track-a);
+}
+
+.reading.font-b {
+  font-family: var(--font-b);
+  --read-lh: var(--lh-b);
+  --read-track: var(--track-b);
+}
+
+.reading.font-c {
+  font-family: var(--font-c);
+  --read-lh: var(--lh-c);
+  --read-track: var(--track-c);
+}
+
+.reading.font-d {
+  font-family: var(--font-d);
+  --read-lh: var(--lh-d);
+  --read-track: var(--track-d);
+}
+
+/* 버튼의 'A' 미리보기도 각 폰트로 */
+.font-chip[data-font=a] span {
+  font-family: var(--font-a);
+}
+
+.font-chip[data-font=b] span {
+  font-family: var(--font-b);
+}
+
+.font-chip[data-font=c] span {
+  font-family: var(--font-c);
+}
+
+.font-chip[data-font=d] span {
+  font-family: var(--font-d);
+}
+
+.post-title {
+  font-family: var(--title-font);
+  font-weight: var(--title-weight);
+  letter-spacing: var(--title-track);
+}
+
+.post-author, .reading {
+  font-family: var(--content-font);
+}
+
+.post-title {
+  letter-spacing: -0.01em;
+}
+
+/* ===== BG BOX ===== */
+.bg.box {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: transparent;
+  border-radius: var(--bg-radius);
+  padding: 28px 18px 24px;
+}
+
+/* “글 아래에 깔리는” 하얀 사각형 + 블러 */
+.bg.box::before {
+  content: "";
+  position: absolute;
+  inset: var(--bg-blur-pad);
+  border-radius: inherit;
+  background: rgba(255, 255, 255, var(--bg-blur-alpha));
+  filter: blur(var(--bg-blur-px));
+  z-index: -1; /* 콘텐츠 아래로 */
+  pointer-events: none;
+}
+
+/* 🔸 모바일: 래퍼 패딩을 무시하고 진짜 풀블리드 (가로 스크롤 X) */
+@media (max-width: 572px) {
+  .bg.box {
+    border-radius: 0;
+    width: calc(100% + var(--wrap-pad-x) * 2);
+    margin-left: calc(-1 * var(--wrap-pad-x));
+    margin-right: calc(-1 * var(--wrap-pad-x));
+    max-width: none;
+  }
+}
+/* 안전망(레거시 브라우저): 혹시 모를 1px 튐 방지 */
+html, body {
+  overflow-x: hidden;
+}
+
+/* 제목 */
+.post-head {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 150px;
+}
+
+.post-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: rgb(48, 48, 48) 1;
+}
+
+.post-author {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #5a7081;
+}
+
+/* 유튜브 (모바일 기본: 318x179) */
+.yt-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 90px;
+}
+
+.yt {
+  width: var(--yt-w);
+  height: var(--yt-h);
+  border: 0;
+  border-radius: 0px;
+  overflow: hidden;
+}
+
+/* 본문 폭: BG 박스 폭 * 비율 */
+.reading {
+  width: 100%;
+  max-width: calc(min(100%, var(--bg-max)) * var(--text-ratio));
+  margin: 20px auto 28px;
+  margin-bottom: 250px;
+  font-size: var(--read-size, 14px);
+  line-height: var(--read-lh, 1.74);
+  letter-spacing: var(--read-track, -0.01em);
+  transform: translateZ(0); /* 폰트 스케일링 미세선명도 */
+}
+
+/* 액션: bg box 하단 기준, 중앙/우측 배치 */
+.action-bar {
+  display: grid;
+  grid-template-columns: 1fr; /* 한 열 */
+  row-gap: var(--action-gap, 18px); /* 두 버튼 사이 간격 */
+  padding: 24px 0 0px; /* bg box 하단 기준 여백은 여기서 조절 */
+}
+
+/* 각 버튼 정렬 */
+.action-bar .egg-btn {
+  justify-self: center;
+}
+
+.action-bar .review-btn {
+  justify-self: end;
+}
+
+.review {
+  width: 70px;
+  height: auto;
+  margin-top: 50px;
+}
+
+.ab-divider {
+  width: 600px;
+  max-width: 80vw;
+  margin: 0 auto;
+  height: 0;
+  border-top: 1px dashed rgba(200, 200, 200, 0.9);
+  padding: 30px;
+}
+
+/* ===== 푸터(모바일) — 기존 패턴 최소치 ===== */
+.site-footer {
+  padding-top: var(--ft-pad-top);
+}
+
+.copyright-img {
+  display: block;
+  width: var(--cr-img-w);
+  margin: var(--cr-mt) auto 0;
+  padding: 10px;
+}
+
+/* =========================================
+   DESKTOP UP (≥800px)
+========================================= */
+@media (min-width: 800px) {
+  :root {
+    --wrap-pad-top:56px;
+    --wrap-pad-x:20px;
+    --wrap-pad-bottom:40px;
+    --home-top:12px;
+    --home-left:12px;
+    --home-w:140px;
+    --fic-w:120px;
+    --brand-gap:12px;
+    --header-gap-bottom:50px;
+    --cat-gap:40px;
+    --cat-fs:8px;
+    --text-ratio:0.86375; /* PC: 691 / 800 */
+    --yt-w:416px;
+    --yt-h:234px; /* PC 고정치 */
+    --btn-w:110px;
+    --btn-h:78px;
+    --cr-img-w:280px;
+    --cr-mt:24px;
+  }
+  .prefs-panel {
+    width: 300px;
+  }
+  .post-title {
+    font-size: 16px;
+  }
+  .post-author {
+    font-size: 14px;
+  }
+}
+/* =========================================
+   DARK MODE
+========================================= */
+body[data-theme=dark] {
+  color: #000000;
+}
+
+/* 다크모드용 살짝 어두운 글래스 */
+body[data-theme=dark] {
+  --glass-blur: 18px;
+  --glass-bg-1: rgba(15,20,24,.55);
+  --glass-bg-2: rgba(15,20,24,.28);
+  --glass-border: rgba(255,255,255,.18);
+  --glass-shadow: 0 12px 32px rgba(0,0,0,.45);
+  --glass-txt: #e6eef3;
+  --glass-txt-dim: #b9c6cf;
+}
+
+/* 배경이미지 → 올블랙 */
+body[data-theme=dark]::before {
+  background: #000;
+}
+
+body[data-theme=dark] .cat span {
+  color: #767676;
+}
+
+body[data-theme=dark] .bg.box::before {
+  background: rgba(255, 255, 255, 0);
+  filter: blur(calc(var(--bg-blur-px) * 0.9));
+}
+
+body[data-theme=dark] .fic-logo {
+  opacity: 70%;
+}
+
+body[data-theme=dark] .prefs-trigger,
+body[data-theme=dark] .prefs-panel {
+  background: rgba(20, 29, 33, 0.82);
+  color: #e7eef3;
+}
+
+body[data-theme=dark] .size-ctrl button {
+  background: #262626;
+  color: #585858;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+body[data-theme=dark] .toggle-dark {
+  background: #262626;
+  color: #585858;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+body[data-theme=dark] .post-title {
+  color: rgba(255, 255, 255, 0.7607843137);
+}
+
+body[data-theme=dark] .post-author {
+  color: rgba(255, 255, 255, 0.7607843137);
+}
+
+body[data-theme=dark] .reading {
+  color: rgba(255, 255, 255, 0.8352941176);
+}
+
+body[data-theme=dark] .font-chip {
+  background: #262626;
+  color: #585858;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+body[data-theme=dark] .egg-btn,
+body[data-theme=dark] .review-btn {
+  opacity: 80%;
+}/*# sourceMappingURL=ficview.css.map */

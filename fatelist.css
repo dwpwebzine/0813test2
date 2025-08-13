@@ -1,0 +1,702 @@
+@charset "UTF-8";
+/* ===================
+   FONT
+=================== */
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/woff2/PretendardVariable.woff2") format("woff2-variations");
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Originals";
+  src: url("fonts/originals.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "cam";
+  src: url("fonts/CambayDevanagari-Bold.AH.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "kopubbold";
+  src: url("fonts/KoPubWorld_Dotum_Pro_Bold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "kopub";
+  src: url("fonts/KoPubWorld_Dotum_Pro_Medium.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/* ===================
+   RESET / BASICS
+=================== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  background: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: "Pretendard", "cam", system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+  cursor: url("images/cursor.png") 6 6, auto;
+}
+
+/* 전체 고정 배경 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("images/bg2.jpg") center/cover no-repeat;
+  z-index: -1;
+}
+
+/* ===============================
+   TOKENS (DESKTOP DEFAULT)
+   - 모바일은 아래 @media에서 :root만 override
+================================ */
+:root {
+  /* Layout container */
+  --container-max: 698px;
+  --pad-top: 80px;
+  --pad-x: 20px;
+  --pad-bottom: 40px;
+  /* Home logo */
+  --home-top: 12px;
+  --home-left: 12px;
+  --home-w: 140px;
+  /* Brand */
+  --fic-w: 220px;
+  --brand-gap: 30px;
+  --header-gap-bottom: 60px;
+  /* Category */
+  --cat-gap: 40px;
+  --cat-fs: 8px;
+  /* Type */
+  --title-fw: 400;
+  --title-lh: 1.7;
+  --author-fw: 700;
+  --author-lh: 1.5;
+  /* Footer (PC) */
+  --ft-maxw: 700px; /* 푸터 전체 폭 */
+  --ft-pad-top: 80px; /* 푸터 상단 여백 */
+  --ft-pad-x: 20px; /* 좌우 패딩 */
+  --ft-gap: 40px; /* 칼럼 간격 */
+  /* 4단: 1(왼쪽) | 2(스페이서) | 3(링크) | 4(오른쪽 배지) */
+  --ft-col2-spacer: 60px; /* 2번 칼럼(빈칸) 폭 */
+  --ft-col3-fr: .90fr; /* 3번 칼럼 비율(작아질수록 우측으로 붙음) */
+  /* 이미지 크기(PC) */
+  --ft-left-img-w: 120px;
+  --ft-right1-w: 165px;
+  --ft-right2-w: 144px;
+  --ft-right-gap: 7px;
+  /* 링크 타이포 */
+  --ft-link-fs: 14px;
+  --ft-link-color: #1c425a;
+  --ft-link-gap: 7px;
+  /* 카피라이트 이미지 */
+  --cr-img-w: 280px;
+  --cr-mt: 24px;
+}
+
+/* ===============================
+   LAYOUT
+================================ */
+.wrap {
+  max-width: var(--container-max);
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+}
+
+/* ===================
+   HEADER / BRAND
+=================== */
+.home-link {
+  position: fixed;
+  top: var(--home-top);
+  left: var(--home-left);
+  z-index: 100;
+}
+
+.home-logo {
+  width: var(--home-w);
+  height: auto;
+  margin: 0 !important;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: var(--header-gap-bottom);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--brand-gap);
+  text-align: center;
+}
+
+.fic-logo {
+  width: var(--fic-w);
+  height: auto;
+  margin: 0 auto;
+}
+
+/* ===================
+   CATEGORY NAV
+=================== */
+.cat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--cat-gap);
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.cat a {
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cat span {
+  font-family: "Originals", "Pretendard", sans-serif;
+  font-size: var(--cat-fs);
+  color: #fff;
+}
+
+/* 활성 fic 투명 50% */
+.cat a.is-active span {
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+/* ===================
+   LIST / CARD
+=================== */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap-y);
+  align-items: center;
+}
+
+/* 타이포: 카드 너비 기준 스케일 */
+.title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--title-badge-gap);
+  font-family: "kopub", helvetica, sans-serif;
+  font-weight: var(--title-fw);
+  font-size: 12px;
+  line-height: var(--title-lh);
+  margin: 0;
+  color: #434649;
+}
+
+.author {
+  font-family: "kopubbold", helvetica, sans-serif;
+  font-weight: var(--author-fw);
+  font-size: 13px;
+  line-height: var(--author-lh);
+  color: #5a7081;
+  margin-top: 2px;
+}
+
+/* 컨테이너쿼리 미지원 브라우저 폴백 */
+@supports not (container-type: inline-size) {
+  .title {
+    line-height: 1;
+  }
+  .author {
+    line-height: 1;
+  }
+}
+/* 카드가 아주 좁아질 때(카드 폭 기준) 미세 축소 */
+@container (max-width: 380px) {
+  .title {
+    line-height: 1;
+  }
+  .author {
+    line-height: 1;
+  }
+}
+.egg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0;
+  margin-top: 30px;
+}
+
+/* ===============================
+   FOOTER (PC: 4단, 2번 칸 스페이서)
+================================ */
+.site-footer {
+  padding-top: var(--ft-pad-top);
+}
+
+.ft-divider {
+  max-width: var(--ft-maxw);
+  margin: 0 auto;
+  height: 0;
+  border-top: 1px dashed rgba(255, 255, 255, 0.9);
+  padding: 15px;
+}
+
+.footer-row {
+  max-width: var(--ft-maxw);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--ft-pad-x);
+  display: grid;
+  grid-template-columns: auto var(--ft-col2-spacer) minmax(120px, var(--ft-col3-fr)) auto; /* 4: 오른쪽 배지(콘텐츠 폭) */
+  -moz-column-gap: var(--ft-gap);
+       column-gap: var(--ft-gap);
+  align-items: flex-start;
+}
+
+/* 칼럼 매핑 */
+.footer-col.left {
+  grid-column: 1;
+}
+
+.footer-col.middle {
+  grid-column: 3;
+  justify-self: end;
+}
+
+.footer-col.right {
+  grid-column: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ft-right-gap);
+}
+
+/* 이미지/링크/카피라이트 */
+.ft-img-left {
+  width: var(--ft-left-img-w);
+  height: auto;
+}
+
+.ft-img-right1 {
+  width: var(--ft-right1-w);
+  height: auto;
+  border-radius: 0;
+}
+
+.ft-img-right2 {
+  width: var(--ft-right2-w);
+  height: auto;
+  border-radius: 0;
+}
+
+.cam {
+  font-family: "cam", "Pretendard", sans-serif;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ft-link-gap);
+}
+
+.footer-links a {
+  font-size: var(--ft-link-fs);
+  color: var(--ft-link-color);
+  text-decoration: underline;
+}
+
+.footer-links .nowrap {
+  white-space: nowrap;
+} /* "Make a review" 한 줄 고정 */
+.copyright-img {
+  display: block;
+  width: var(--cr-img-w);
+  height: auto;
+  margin: var(--cr-mt) auto 0;
+  padding: 10px;
+}
+
+/* ===============================
+   BREAKPOINTS: 폭 줄수록 간격/비율 축소
+================================ */
+/* ≤900px */
+@media (max-width: 900px) {
+  :root {
+    --ft-gap: 36px;
+    --ft-col2-spacer: 64px;
+    --ft-col3-fr: .74fr;
+    --ft-left-img-w:112px;
+    --ft-right1-w:150px;
+    --ft-right2-w:132px;
+    --cr-img-w:260px;
+  }
+}
+/* ≤768px */
+@media (max-width: 768px) {
+  :root {
+    --ft-gap:22px;
+    --ft-col2-spacer:52px;
+    --ft-col3-fr:.68fr;
+    --ft-left-img-w:96px;
+    --ft-right1-w:128px;
+    --ft-right2-w:112px;
+    --cr-img-w:240px;
+    --card-pad-x: 65px;
+  }
+}
+/* ≤572px (모바일 베이스) */
+@media (max-width: 572px) {
+  :root {
+    /* layout */
+    --container-max:100%;
+    --pad-top:78px;
+    --pad-x:14px;
+    --pad-bottom:40px;
+    /* header/nav */
+    --home-top:15px;
+    --home-left:15px;
+    --home-w:100px;
+    --fic-w:185px;
+    --brand-gap:28px;
+    --header-gap-bottom:45px;
+    --cat-gap:35px;
+    --cat-fs:6.5px;
+    /* cards */
+    --meta-top:30%;
+    /* footer */
+    --ft-gap:30px;
+    --ft-col2-spacer:36px;
+    --ft-col3-fr:.60fr;
+    --ft-left-img-w:64px;
+    --ft-right1-w:86px;
+    --ft-right2-w:80px;
+    --ft-link-fs:12px;
+    --ft-link-gap:6px;
+    --cr-img-w:200px;
+    --cr-mt:18px;
+  }
+  .wrap {
+    padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+  }
+  /* 링크는 우측 정렬 느낌 주기 */
+  .footer-links {
+    align-items: flex-start;
+  }
+  .footer-links a {
+    text-align: left;
+  }
+  .ft-divider {
+    max-width: calc(100vw - var(--ft-pad-x) * 2);
+  }
+  .footer-row {
+    grid-template-columns: auto var(--ft-col2-spacer) max-content auto; /* 4: 오른쪽 배지 */
+  }
+  /* 실제 폰트값 미세 축소는 토큰 밖에서 선언 */
+  .title {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .author {
+    font-size: 14px;
+    line-height: 1;
+  }
+}
+/* ≤445px : 텍스트 위치/배지 간격 살짝 보정 */
+@media (max-width: 500px) {
+  :root {
+    --meta-top:28%;
+    --title-badge-gap:5px;
+    --card-pad-x: 55px;
+  }
+  /* 실제 폰트값 미세 축소는 토큰 밖에서 선언 */
+  .title {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .author {
+    font-size: 13px;
+    line-height: 1;
+  }
+}
+/* ≤440px : 글씨 왼쪽으로 */
+@media (max-width: 440px) {
+  :root {
+    --card-pad-x: 52px;
+  }
+  /* 실제 폰트값 미세 축소는 토큰 밖에서 선언 */
+  .title {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .author {
+    font-size: 12px;
+    line-height: 1;
+  }
+}
+/* ≤400px */
+@media (max-width: 400px) {
+  :root {
+    --meta-top:26%;
+    --meta-top:25%;
+    --ft-gap:23px;
+    --ft-col2-spacer:11px;
+    --ft-col3-fr:.55fr;
+    --ft-left-img-w:50px;
+    --ft-right1-w:82px;
+    --ft-right2-w:75px;
+    --ft-link-fs:12px;
+    --cr-img-w:150px;
+    --cr-mt:13px;
+    --card-pad-x: 42px;
+    --ft-col2-spacer: 40px; /* 2번 칼럼(빈칸) 폭 */
+  }
+  :root .title {
+    font-size: 10px;
+  }
+  :root .author {
+    font-size: 11px;
+  }
+}
+/* ≤375px : 초소형(시안 느낌 강화) */
+@media (max-width: 375px) {
+  :root {
+    --meta-top:23%;
+    --ft-gap:25px;
+    --ft-col2-spacer:10px;
+    --ft-col3-fr:0.1fr;
+    --ft-left-img-w:60px;
+    --ft-right1-w:82px;
+    --ft-right2-w:74px;
+    --ft-link-fs:11px;
+    --cr-img-w:150px;
+    --cr-mt:14px;
+    --card-pad-x: 42px;
+    --ft-col2-spacer: 0px; /* 2번 칼럼(빈칸) 폭 */
+  }
+  :root .title {
+    font-size: 10px;
+  }
+  :root .author {
+    font-size: 10.5px;
+  }
+}
+/* ≤345px : 초소형2 */
+@media (max-width: 345px) {
+  :root {
+    --meta-top:20%;
+    --title-badge-gap:4px;
+    --ft-gap:22px;
+    --ft-col2-spacer:0px;
+    --ft-col3-fr:0fr;
+    --ft-left-img-w:60px;
+    --ft-right1-w:83px;
+    --ft-right2-w:73px;
+    --ft-link-fs:11px;
+    --cr-img-w:150px;
+    --cr-mt:14px;
+    --card-pad-x: 38px;
+    --ft-col2-spacer: 0px; /* 2번 칼럼(빈칸) 폭 */
+  }
+  /* 실제 폰트값 미세 축소는 토큰 밖에서 선언 */
+  .title {
+    font-size: 4px;
+    line-height: 1;
+  }
+  .author {
+    font-size: 8px;
+    line-height: 1;
+  }
+}
+/* ≤320px : 아이폰se, mini */
+@media (max-width: 320px) {
+  :root {
+    --meta-top:20%;
+    --title-badge-gap:4px;
+    --ft-gap:16px;
+    --ft-col2-spacer:0px;
+    --ft-col3-fr:0fr;
+    --ft-left-img-w:60px;
+    --ft-right1-w:85px;
+    --ft-right2-w:75px;
+    --ft-link-fs:11px;
+    --cr-img-w:150px;
+    --cr-mt:14px;
+    --card-pad-x: 32px;
+    --ft-col2-spacer: 0px; /* 2번 칼럼(빈칸) 폭 */
+  }
+  /* 실제 폰트값 미세 축소는 토큰 밖에서 선언 */
+  .title {
+    font-size: 6px;
+    line-height: 1;
+  }
+  .author {
+    font-size: 8px;
+    line-height: 1;
+  }
+}
+/* ===================
+   FATE LIST — Cards
+=================== */
+/* 카드 컨테이너: 카드 폭 기준 폰트 스케일 위해 컨테이너 쿼리 ON */
+.card {
+  position: relative;
+  width: 100%;
+  container-type: inline-size;
+}
+
+/* 블러 박스 */
+.glass {
+  position: relative;
+  padding: clamp(16px, 4cqw, 28px) var(--card-pad-x, clamp(20px, 6cqw, 56px));
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0); /* 안쪽 약간만 색 */
+  filter: blur(0.1); /* 내용 왜곡 최소화 */
+}
+
+/* 가장자리 소프트한 퍼짐(외곽 블러 느낌) */
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.6); /* 블러 먹이는 색 */
+  filter: blur(5px); /* 외곽 번짐 강도 */
+  z-index: -1; /* 텍스트 뒤 */
+}
+
+/* 카드 간격 */
+.list {
+  gap: clamp(18px, 4cqw, 36px);
+}
+
+/* 텍스트 기본(자간 변수로 제어) */
+:root {
+  --ls-body: 0.01em;
+  --ls-title: 0.005em;
+  --ls-author: 0.02em;
+}
+
+/* 자간 적용 지점 */
+.title,
+.title-text p {
+  letter-spacing: -0.02em;
+}
+
+.author {
+  letter-spacing: -0.02em;
+}
+
+/* 이미 쓰고 있는 스케일 유지 + 살짝 보정 */
+.title {
+  font-size: clamp(12px, 2cqw, 16px);
+  line-height: var(--title-lh, 1.7);
+  color: #232426;
+}
+
+.author {
+  font-size: clamp(13px, 2.1cqw, 20px);
+  line-height: var(--author-lh, 1);
+  color: #3c4851;
+  margin-bottom: 2px;
+}
+
+/* 본문 문단 여백 */
+.title-text p {
+  margin: 0 0 clamp(10px, 3.5cqw, 14px);
+}
+
+/* 모바일 베이스 보정 */
+@media (max-width: 572px) {
+  :root {
+    --ls-body: 0.005em; /* 모바일은 자간 살짝 줄여 조밀도 ↑ */
+    --ls-author: 0.015em;
+  }
+  .glass {
+    border-radius: 16px;
+    padding: clamp(14px, 4cqw, 26px) clamp(22px, 8cqw, 44px);
+  }
+}
+/* 초소형 화면 보정 */
+@media (max-width: 360px) {
+  .glass {
+    padding: 10px var(--card-pad-x, 16px);
+  }
+  .title {
+    font-size: clamp(11px, 2.2cqw, 13px);
+  }
+  .author {
+    font-size: clamp(12px, 3.6cqw, 14px);
+  }
+}
+/*=====모바일 또 보정======*/
+/* ===== FATE list: 모바일 튜닝 (≤572px) ===== */
+@media (max-width: 572px) {
+  :root {
+    /* 상단 여백만 살짝 늘려 첫 카드가 더 내려오게 */
+    --header-gap-bottom: 70px; /* 기존 50px → 70px */
+    /* 좌우 여백(글줄 폭) 살짝 늘리기: 카드 내부 패딩 축소 */
+    --card-pad-x: 18px; /* 기존 값보다 -4~10px 정도 줄임 */
+    /* 필요하면 페이지 전체 패딩도 살짝 축소 */
+    --pad-x: 15px; /* wrap 좌우 패딩 살짝만 줄임 */
+  }
+  /* 블러 사각형: 상하좌우 동일 패딩 적용 */
+  .glass {
+    /* 한 줄로 동일 값: 상=하=좌=우 */
+    --glass-pad: clamp(16px, 9cqw, 22px);
+    padding: clamp(14px, 7.5cqw, 26px) clamp(22px, 9cqw, 44px);
+    border-radius: 12px; /* 둥글기 유지 */
+  }
+}
+/* 초소형 보정 (≤400px): 너무 꽉 차 보이면 아주 살짝만 패딩 복원 */
+@media (max-width: 400px) {
+  .glass {
+    --glass-pad: clamp(14px, 7cqw, 20px);
+  }
+  .glass .title {
+    font-size: clamp(11px, 3.6cqw, 15px);
+  }
+  .glass .author {
+    font-size: clamp(12px, 3.8cqw, 18px);
+  }
+}
+@media (min-width: 572px) and (max-width: 768px) {
+  :root {
+    --header-gap-bottom: 80px; /* 헤더 밑 여백 살짝 늘림 */
+    --card-pad-x: 24px; /* 글자 폭 조금 넓힘 */
+    --pad-x: 18px; /* wrap 좌우 패딩 줄임 */
+  }
+  .glass {
+    --glass-pad: clamp(20px, 4cqw, 28px);
+    padding: var(--glass-pad);
+    border-radius: 14px;
+  }
+}
+.card p:last-child {
+  margin-bottom: 0;
+}/*# sourceMappingURL=fatelist.css.map */

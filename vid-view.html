@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charmed Chart</title>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="stylesheet" href="vidview.css" />
+
+  <!-- Pretendard -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+</head>
+
+<body data-page="vid-view">
+  <!-- 홈 로고 -->
+  <a href="knock.html" class="home-link" aria-label="홈">
+    <img src="images/home.png" alt="home" class="home-logo" />
+  </a>
+
+  <div class="wrap">
+    <!-- 헤더 -->
+    <header class="top">
+      <div class="brand">
+        <a href="choice.html" aria-label="fic">
+          <img class="fic-logo" src="images/silverheart.png" alt="Vid" />
+        </a>
+
+        <nav class="cat" aria-label="카테고리">
+          <a href="fic.html"><span>fic</span></a>
+          <a href="art.html"><span>art</span></a>
+          <a href="vid.html" class="is-active"><span>vid</span></a>
+          <a href="fate.html"><span>fate</span></a>
+        </nav>
+      </div>
+
+    
+      </div>
+    </header>
+
+    <!-- 배경 상자 (bg box) -->
+    <main class="bg box" aria-label="본문 박스">
+      <!-- 제목/작성자 -->
+      <header class="post-head">
+        <h1 class="post-title">글 제목입니다</h1>
+        <div class="post-author">풍선</div>
+      </header>
+
+      <!-- 유튜브 영역 -->
+      <figure class="yt-wrap">
+        <iframe
+          class="yt"
+          src="https://www.youtube-nocookie.com/embed/YUw2lTlfucM?si=eLJmN4HUKk8iLPcl"
+          title="YouTube video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </figure>
+
+      <!-- 액션 영역: 랜덤 이스터에그(가운데), 고정 링크(오른쪽) -->
+      <div class="action-bar">
+        <div class="ab-divider" aria-hidden="true"></div>
+        <a class="egg-btn" href="#" id="random-egg">random egg</a>
+        <a class="review-btn" href="#" target="_blank" rel="noopener">
+          <img src="images/review.png" class="review" /></a>
+      </div>
+    </main>
+
+    <!-- ===== 푸터 ===== -->
+    <footer class="site-footer">
+      
+     
+      <img src="images/copyright.png" alt="copyright" class="copyright-img" />
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

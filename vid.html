@@ -1,0 +1,143 @@
+<!-- ✅ 5. vid List Page -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charmed Chart</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="vidlist.css" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+</head>
+<body>
+  <div class="wrap">
+    <!-- ✅ head 밖으로 이동 -->
+    <a href="knock.html" class="home-link" aria-label="홈">
+      <img src="images/home.png" alt="home" class="home-logo" />
+    </a>
+
+    <header class="top">
+      <div class="brand">
+        <!-- Art 로고 -->
+        <a href="choice.html" aria-label="art">
+          <img class="fic-logo" src="images/vid_title.png" alt="Vid" />
+        </a>
+
+        <!-- 카테고리 메뉴 -->
+        <nav class="cat" aria-label="카테고리">
+          <a href="fic.html"><span>fic</span></a>
+          <a href="art.html"><span>art</span></a>
+          <a href="vid.html" class="is-active"><span>vid</span></a>
+          <a href="fate.html"><span>fate</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 글 리스트(카드만 포함) -->
+    <main class="list" aria-label="영상 목록">
+      <!-- 카드 1 -->
+      <article class="card">
+        <a href="vid-view.html">
+          <div class="thumb">
+            <img src="images/art_thum/2.jpg" alt="썸네일 이미지" />
+          </div>
+          <div class="meta">
+            <h3 class="title"><span class="title-text">안녕하세요</span></h3>
+            <div class="author">풍선</div>
+          </div>
+        </a>
+      </article>
+
+      <!-- 카드 2 -->
+      <article class="card">
+        <a href="#">
+          <div class="thumb">
+            <img src="images/art_thum/3.jpg" alt="썸네일 이미지" />
+          </div>
+          <div class="meta">
+            <h3 class="title"><span class="title-text">Catch me if you can</span></h3>
+            <div class="author">hello</div>
+          </div>
+        </a>
+      </article>
+
+      <!-- 카드 3 -->
+      <article class="card">
+        <a href="#">
+          <div class="thumb">
+            <img src="images/art_thum/4.jpg" alt="썸네일 이미지" />
+          </div>
+          <div class="meta">
+            <h3 class="title"><span class="title-text">안녕하세요</span></h3>
+            <div class="author">👟</div>
+          </div>
+        </a>
+      </article>
+
+      <!-- 카드 4 -->
+      <article class="card">
+        <a href="#">
+          <div class="thumb">
+            <img src="images/art_thum/1.jpg" alt="썸네일 이미지" />
+          </div>
+          <div class="meta">
+            <h3 class="title">
+              <span class="title-text">안녕하세요</span>
+              <span class="age-badge" aria-label="19금">19</span>
+            </h3>
+            <div class="author">풍선</div>
+          </div>
+        </a>
+      </article>
+
+      <!-- 카드 5 -->
+      <article class="card">
+        <a href="#">
+          <div class="thumb">
+            <img src="images/art_thum/3.jpg" alt="썸네일 이미지" />
+          </div>
+          <div class="meta">
+            <h3 class="title"><span class="title-text">안녕하세요</span></h3>
+            <div class="author">풍선</div>
+          </div>
+        </a>
+      </article>
+
+       <!-- ✅ egg -->
+    <div class="egg">
+      <span id="egg-slot-bottom" class="egg-slot" aria-hidden="true">random egg</span>
+    </div>
+
+    </main> <!-- ✅ main 닫기 -->
+
+   
+
+    <!-- 푸터 -->
+    <footer class="site-footer">
+      <div class="ft-divider" aria-hidden="true"></div>
+      <div class="footer-row">
+        <div class="footer-col left">
+          <a href="#">
+            <img src="images/cd_playlist.png" alt="playlist" class="ft-img-left">
+          </a>
+        </div>
+        <div class="footer-col middle">
+          <nav class="footer-links cam" aria-label="Footer links">
+            <a href="choice.html">Choice</a>
+            <a href="https://x.com/dwpwebzine" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Make a review</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Maze</a>
+          </nav>
+        </div>
+        <div class="footer-col right">
+          <a href="https://youtu.be/6OsolgPkj5k?si=6xER9WQwfjqD4X9R" target="_blank" rel="noopener noreferrer">
+            <img src="images/whygeuraead.png" alt="ad" class="ft-img-right1">
+          </a>
+          <a href="knock.html"><img src="images/banner.jpg" alt="banner" class="ft-img-right2"></a>
+        </div>
+      </div>
+      <img src="images/copyright.png" alt="copyright" class="copyright-img">
+    </footer>
+  </div> <!-- ✅ wrap 닫기 (여분 </div> 제거) -->
+</body>
+</html>
