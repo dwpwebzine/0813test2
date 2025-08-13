@@ -1,0 +1,147 @@
+@charset "UTF-8";
+/* ===== 타이틀(위치만) — 폰트/크기는 ficview가 관리 ===== */
+.verify .post-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0px;
+  margin: var(--verify-title-mt) 0 var(--verify-title-mb);
+}
+
+.verify .post-title {
+  font-family: var(--title-font);
+  font-weight: var(--title-weight);
+  letter-spacing: var(--title-track);
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: rgb(48, 48, 48) 1;
+}
+
+.verify .post-head {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 120px;
+}
+
+.verify .post-author {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #5a7081;
+  font-family: var(--content-font);
+  opacity: 0.8;
+}
+
+/* ===== 성인 인증 내용 스택 ===== */
+.av-lines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.verify .av-lines .text {
+  font-size: 13px;
+  opacity: 0.9;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.895);
+}
+
+.verify .av-lines .link {
+  font-family: "camobli", "Pretendard", sans-serif;
+  font-size: 16px;
+  text-decoration: underline;
+  color: rgb(81, 140, 192);
+}
+
+/* 입력 필드: 투명 타원 + 안쪽 그레이 블러 느낌 */
+.verify .pin-input {
+  width: 200px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 6px 6px rgba(138, 138, 138, 0.12), inset 0 2px 3px rgba(138, 138, 138, 0.12);
+  outline: none;
+  padding: 0 16px;
+  text-align: center;
+  font-size: 14px;
+  color: inherit;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.verify .pin-input::-moz-placeholder {
+  color: transparent;
+}
+
+.verify .pin-input::placeholder {
+  color: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  .verify .pin-input {
+    background: rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+/* 이미지 버튼 */
+.verify .go-image-btn img {
+  display: block;
+  width: 52px;
+  height: auto;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+  transition: transform 0.15s ease;
+}
+
+.verify .go-image-btn:hover img {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.verify .go-image-btn:active img {
+  transform: translateY(0) scale(0.98);
+}
+
+/* 에그 슬롯 */
+.verify .egg-line {
+  margin-top: 230px;
+  padding: 60px;
+}
+
+.verify .egg-slot {
+  width: 120px;
+  height: 120px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+}
+
+@media (min-width: 768px) {
+  .verify .pin-input {
+    width: 240px;
+    height: 40px;
+  }
+  .verify .go-image-btn img {
+    width: 56px;
+  }
+  .verify .egg-slot {
+    width: 140px;
+    height: 140px;
+  }
+}
+.site-footer {
+  padding-top: var(--ft-pad-top);
+}
+
+.copyright-img {
+  display: block;
+  width: var(--cr-img-w);
+  margin: var(--cr-mt) auto 0;
+  padding: 10px;
+}/*# sourceMappingURL=adult.css.map */

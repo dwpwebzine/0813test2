@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charmed Chart</title>
+  <link rel="icon" type="image/png" href="../images/favicon.png" />
+  <link rel="stylesheet" href="adult.css" />
+<link rel="stylesheet" href="../ficview.css" />
+</head>
+
+<body data-page="fic-view">
+  <!-- 홈 로고 -->
+  <a href="../knock.html" class="home-link" aria-label="홈">
+    <img src="../images/home.png" alt="home" class="home-logo" />
+  </a>
+
+  <div class="wrap">
+    <!-- 헤더 -->
+    <header class="top">
+      <div class="brand">
+        <a href="../choice.html" aria-label="fic">
+          <img class="fic-logo" src="../images/silverheart.png" alt="Fic" />
+        </a>
+
+        <nav class="cat" aria-label="카테고리">
+          <a href="../fic.html" class="is-active"><span>fic</span></a>
+          <a href="../art.html"><span>art</span></a>
+          <a href="../vid.html"><span>vid</span></a>
+          <a href="../fate.html"><span>fate</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- bg box -->
+    <main class="bg box verify" aria-label="본문 박스">
+         <!-- 제목/작성자 -->
+          <header class="post-head">
+            <h1 class="post-title">글 제목입니다</h1>
+            <div class="post-author">풍선</div>
+          </header>
+
+      <section class="verify-box">
+        <div class="vb-inner">
+
+          <!-- 내용 라인 스택 -->
+          <div class="av-lines">
+            <span class="text">포스타입 내 성인인증 비밀번호를 입력하세요</span>
+            <a class="link" href="#" target="_blank" rel="noopener noreferrer">link</a>
+
+            <span class="input-line">
+              <label for="pin" class="sr-only"></label>
+              <input id="pin" class="pin-input" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" />
+            </span>
+
+            <!-- 이미지 버튼 -->
+            <span class="line btn-line">
+              <a class="go-image-btn" href="https://posty.pe/your-target" aria-label="go">
+                <img src="../images/go_button.png" alt="" />
+              </a>
+            </span>
+
+            <!-- 랜덤 에그 (하단 고정 슬롯) -->
+            <span class="line egg-line">
+              <div id="egg-slot-bottom" class="egg-slot" aria-hidden="true"></div>
+            </span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="site-footer">
+      <img src="../images/copyright.png" alt="copyright" class="copyright-img" />
+    </footer>
+  </div>
+
+  <!-- 공통 스크립트 (에그/다크모드 등) -->
+  <script src="../main.js" defer></script>
+</body>
+</html>
